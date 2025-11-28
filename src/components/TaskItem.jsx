@@ -1,7 +1,7 @@
-export default function TaskItem() {
+export default function TaskItem({ task }) {
   return (
     <div>
-      <h1>Task Item</h1>
+      <h1>{task.title}</h1>
     </div>
   )
 }

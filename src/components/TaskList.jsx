@@ -1,7 +1,11 @@
-export default function TaskList() {
+import TaskItem from './TaskItem';
+
+export default function TaskList({ tasks }) {
   return (
     <div>
-      <h1>Task List</h1>
+      {tasks.map((task) => (
+        <TaskItem key={task.id} task={task} />
+      ))}
     </div>
   )
 }

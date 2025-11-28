@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getTasks } from '../services/api';
+import TaskList from '../components/TaskList';  
+
 export default function Home() {
   const [tasks, setTasks] = useState([]);
   useEffect(() => {
@@ -11,7 +13,7 @@ export default function Home() {
   }, []);
   return (
     <div>
-      <h1>Home</h1>
+      <TaskList tasks={tasks} />
     </div>
   )
 }
