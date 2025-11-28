@@ -28,8 +28,9 @@ export default function Home() {
 
   return (
     <div>
-      <TaskList tasks={tasks} handleToggleComplete={handleToggleComplete} />
-      <AddTaskForm onAddTask={handleAddTask} />
+        <h1>Tasks</h1>
+        <TaskList tasks={tasks} handleToggleComplete={handleToggleComplete} />
+        <AddTaskForm onAddTask={handleAddTask} />
     </div>
   )
 }
