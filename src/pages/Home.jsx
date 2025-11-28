@@ -30,10 +30,15 @@ export default function Home() {
     setTasks(prevTasks => prevTasks.filter(task => task.id !== id))
   }
 
+  const handleUpdate = (id, title) => {
+    setTasks(prevTasks => prevTasks.map(task => 
+        task.id === id ? {...task, title: title} : task));
+  }
+
   return (
     <div>
         <h1>Tasks</h1>
-        <TaskList tasks={tasks} handleToggleComplete={handleToggleComplete} handleDelete={handleDelete} />
+        <TaskList tasks={tasks} handleToggleComplete={handleToggleComplete} handleDelete={handleDelete} handleUpdate={handleUpdate} />
         <AddTaskForm onAddTask={handleAddTask} />
     </div>
   )
