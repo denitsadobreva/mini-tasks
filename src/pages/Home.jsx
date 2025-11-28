@@ -22,9 +22,13 @@ export default function Home() {
     setTasks((prevTasks) => [...prevTasks, newTask]);
   }
 
+  const handleToggleComplete = (id) => {
+    setTasks((prevTasks) => prevTasks.map((task) => task.id === id ? { ...task, completed: !task.completed } : task));
+  }
+
   return (
     <div>
-      <TaskList tasks={tasks} />
+      <TaskList tasks={tasks} handleToggleComplete={handleToggleComplete} />
       <AddTaskForm onAddTask={handleAddTask} />
     </div>
   )

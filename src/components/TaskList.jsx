@@ -1,11 +1,11 @@
 import TaskItem from './TaskItem';
 
-export default function TaskList({ tasks }) {
+export default function TaskList({ tasks, handleToggleComplete }) {
   return (
-    <div>
+    <ul>
       {tasks.map((task) => (
-        <TaskItem key={task.id} task={task} />
+        <TaskItem key={task.id} task={task} onToggleComplete={() => handleToggleComplete(task.id)} />
       ))}
-    </div>
+    </ul>
   )
 }

@@ -1,7 +1,9 @@
-export default function TaskItem({ task }) {
+export default function TaskItem({ task, onToggleComplete }) {
+
   return (
-    <div>
-      <h1>{task.title}</h1>
-    </div>
+    <li>
+      <span style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>{task.title}</span>
+      <button onClick={() => onToggleComplete(task.id)}>{task.completed ? 'Undo' : 'Complete'}</button>
+    </li>
   )
 }
