@@ -4,15 +4,15 @@ import TaskList from '../components/TaskList';
 import AddTaskForm from '../components/AddTaskForm';
 
 export default function Home() {
-  const [tasks, setTasks] = useState([]);
-  useEffect(() => {
-    getTasks().then((data) => {
-        console.log(data);
-        setTasks(data);
-    })
-    .catch((err) => {console.log(err)});
-  }, []);
+    const [tasks, setTasks] = useState(() => {
+        const stored = localStorage.getItem("tasks");
+        return stored ? JSON.parse(stored) : [];
+    });
 
+    useEffect(() => {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+    }, [tasks]);
+    
   const handleAddTask = (title) => {
     const newTask = {
       id: Date.now(),
@@ -34,6 +34,10 @@ export default function Home() {
     setTasks(prevTasks => prevTasks.map(task => 
         task.id === id ? {...task, title: title} : task));
   }
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   return (
     <div>
