@@ -13,37 +13,37 @@ export default function Home() {
         localStorage.setItem("tasks", JSON.stringify(tasks));
     }, [tasks]);
     
-  const handleAddTask = (title) => {
-    const newTask = {
-      id: Date.now(),
-      title: title,
-      completed: false
+    const handleAddTask = (title) => {
+        const newTask = {
+        id: Date.now(),
+        title: title,
+        completed: false
+        }
+        setTasks((prevTasks) => [...prevTasks, newTask]);
     }
-    setTasks((prevTasks) => [...prevTasks, newTask]);
-  }
 
-  const handleToggleComplete = (id) => {
-    setTasks((prevTasks) => prevTasks.map((task) => task.id === id ? { ...task, completed: !task.completed } : task));
-  }
+    const handleToggleComplete = (id) => {
+        setTasks((prevTasks) => prevTasks.map((task) => task.id === id ? { ...task, completed: !task.completed } : task));
+    }
 
-  const handleDelete = (id) => {
-    setTasks(prevTasks => prevTasks.filter(task => task.id !== id))
-  }
+    const handleDelete = (id) => {
+        setTasks(prevTasks => prevTasks.filter(task => task.id !== id))
+    }
 
-  const handleUpdate = (id, title) => {
-    setTasks(prevTasks => prevTasks.map(task => 
+    const handleUpdate = (id, title) => {
+        setTasks(prevTasks => prevTasks.map(task => 
         task.id === id ? {...task, title: title} : task));
-  }
+    }
 
-  useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
+    useEffect(() => {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+    }, [tasks]);
 
-  return (
-    <div>
-        <h1>Tasks</h1>
-        <TaskList tasks={tasks} handleToggleComplete={handleToggleComplete} handleDelete={handleDelete} handleUpdate={handleUpdate} />
-        <AddTaskForm onAddTask={handleAddTask} />
-    </div>
-  )
+    return (
+        <div>
+            <h1>Tasks</h1>
+            <TaskList tasks={tasks} handleToggleComplete={handleToggleComplete} handleDelete={handleDelete} handleUpdate={handleUpdate} />
+            <AddTaskForm onAddTask={handleAddTask} />
+        </div>
+    )
 }

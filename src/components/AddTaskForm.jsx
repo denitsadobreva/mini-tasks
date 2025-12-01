@@ -8,12 +8,13 @@ export default function AddTaskForm({ onAddTask }) {
         onAddTask(title);
         setTitle('');
     }
-  return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-        <button type="submit">Add Task</button>
-      </form>
-    </div>
-  )
+
+    return (
+        <div>
+        <form onSubmit={handleSubmit}>
+            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+            <button type="submit">Add Task</button>
+        </form>
+        </div>
+    )
 }
